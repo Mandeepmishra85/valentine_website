@@ -2,11 +2,10 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Hey Baby,Will You Be My Valentine? 💖</title>
+<title>Hey Baby, Will You Be My Valentine? 💖</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-/* ===== RESET ===== */
 * {
   margin: 0;
   padding: 0;
@@ -14,7 +13,6 @@
   font-family: "Poppins", sans-serif;
 }
 
-/* ===== BACKGROUND ===== */
 body {
   height: 100vh;
   background: radial-gradient(circle at top, #ff758c, #ff7eb3);
@@ -24,7 +22,7 @@ body {
   align-items: center;
 }
 
-/* ===== FLOATING HEARTS ===== */
+/* Floating Hearts */
 .hearts span {
   position: absolute;
   bottom: -50px;
@@ -34,22 +32,11 @@ body {
 }
 
 @keyframes floatUp {
-  from {
-    transform: translateY(0) scale(0.8);
-    opacity: 1;
-  }
-  to {
-    transform: translateY(-110vh) scale(1.4);
-    opacity: 0;
-  }
+  from { transform: translateY(0) scale(0.8); opacity: 1; }
+  to { transform: translateY(-110vh) scale(1.4); opacity: 0; }
 }
-.name {
-  color: white;
-  font-weight: 600;
-  margin-bottom: 15px;
-  font-size: 1rem;
-}
-/* ===== CARD ===== */
+
+/* Card */
 .card {
   background: rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(15px);
@@ -61,6 +48,13 @@ body {
   box-shadow: 0 25px 50px rgba(0,0,0,0.25);
   animation: fadeIn 1.2s ease;
 }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Photo */
 .photo-wrapper {
   width: 140px;
   height: 140px;
@@ -68,12 +62,7 @@ body {
   border-radius: 50%;
   padding: 5px;
   background: linear-gradient(135deg, #ff416c, #ff4b2b);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
   animation: glow 2.5s infinite alternate, heartbeat 1.8s infinite;
-}
-@keyframes heartbeat {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.06); }
 }
 
 .photo-wrapper img {
@@ -85,34 +74,37 @@ body {
 }
 
 @keyframes glow {
-  from {
-    box-shadow: 0 0 20px rgba(255,65,108,0.6);
-  }
-  to {
-    box-shadow: 0 0 40px rgba(255,75,43,0.9);
-  }
+  from { box-shadow: 0 0 20px rgba(255,65,108,0.6); }
+  to { box-shadow: 0 0 40px rgba(255,75,43,0.9); }
 }
 
+@keyframes heartbeat {
+  0%,100% { transform: scale(1); }
+  50% { transform: scale(1.06); }
+}
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
+/* Text */
+.name {
+  color: white;
+  font-weight: 600;
+  margin-bottom: 10px;
 }
 
 .card h1 {
-  color: #fff;
+  color: white;
   font-size: 2.2rem;
   margin-bottom: 15px;
 }
 
-.card p {
-  color: #fff;
+#typingText {
+  color: white;
   font-size: 1rem;
   margin-bottom: 30px;
   line-height: 1.6;
+  min-height: 60px;
 }
 
-/* ===== BUTTONS ===== */
+/* Buttons */
 .buttons {
   position: relative;
   height: 120px;
@@ -129,7 +121,7 @@ button {
 
 #yesBtn {
   background: linear-gradient(135deg, #ff416c, #ff4b2b);
-  color: #fff;
+  color: white;
   box-shadow: 0 10px 25px rgba(0,0,0,0.3);
 }
 
@@ -138,7 +130,7 @@ button {
 }
 
 #noBtn {
-  background: #fff;
+  background: white;
   color: #ff4b2b;
   position: absolute;
   left: 50%;
@@ -146,49 +138,42 @@ button {
   transform: translateX(-50%);
 }
 
-/* ===== CONFETTI ===== */
+/* Confetti */
 .confetti {
   position: fixed;
   top: -10px;
   width: 10px;
   height: 10px;
-  background: red;
   animation: fall 3s linear forwards;
 }
 
 @keyframes fall {
-  to {
-    transform: translateY(110vh) rotate(360deg);
-    opacity: 0;
-  }
+  to { transform: translateY(110vh) rotate(360deg); opacity: 0; }
 }
 
-/* ===== FOOTER TEXT ===== */
+/* Footer */
 .footer {
   margin-top: 25px;
   font-size: 0.85rem;
-  color: rgba(255,255,255,0.8);
+  color: rgba(255,255,255,0.85);
 }
 </style>
 </head>
 
 <body>
 
-<!-- Floating hearts -->
 <div class="hearts"></div>
 
-<!-- Main Card -->
 <div class="card">
   <div class="photo-wrapper">
-  <img src="her.jpg" alt="My Valentine">
-</div>
+    <img src="her.jpg" alt="My Valentine">
+  </div>
+
   <p class="name">For My Beautiful Valentine 💕</p>
+
   <h1>Will you be my Valentine? 💘</h1>
-  <p>
-    From the moment you came into my life,<br>
-    everything became brighter, warmer, and happier.<br>
-    So tell me…
-  </p>
+
+  <p id="typingText"></p>
 
   <div class="buttons">
     <button id="yesBtn">Yes 💖</button>
@@ -196,14 +181,13 @@ button {
   </div>
 
   <div class="footer">
-    Tmhare Liye ❤️
+    Tumhare Liye ❤️
   </div>
 </div>
 
 <script>
-/* ===== FLOATING HEART GENERATOR ===== */
+/* Hearts */
 const heartsContainer = document.querySelector(".hearts");
-
 for (let i = 0; i < 30; i++) {
   const heart = document.createElement("span");
   heart.innerHTML = "❤️";
@@ -213,53 +197,43 @@ for (let i = 0; i < 30; i++) {
   heartsContainer.appendChild(heart);
 }
 
-/* ===== NO BUTTON RUNS AWAY ===== */
+/* No Button */
 const noBtn = document.getElementById("noBtn");
-
 noBtn.addEventListener("mouseover", () => {
-  const x = Math.random() * 250 - 125;
-  const y = Math.random() * 120 - 60;
-  noBtn.style.transform = `translate(${x}px, ${y}px)`;
+  noBtn.style.transform = `translate(${Math.random()*250-125}px, ${Math.random()*120-60}px)`;
 });
 
-/* ===== YES BUTTON MAGIC ===== */
-const yesBtn = document.getElementById("yesBtn");
-
-yesBtn.addEventListener("click", () => {
+/* Yes Button */
+document.getElementById("yesBtn").addEventListener("click", () => {
   launchConfetti();
-
   setTimeout(() => {
-    window.location.href = "https://www.youtube.com/watch?v=cxKAtmvf-uM&list=RDD9DiMnlpFK8&index=2";
+    window.location.href = "https://www.youtube.com/watch?v=cxKAtmvf-uM";
   }, 1800);
 });
 
-/* ===== CONFETTI FUNCTION ===== */
+/* Confetti */
 function launchConfetti() {
   for (let i = 0; i < 80; i++) {
-    const confetti = document.createElement("div");
-    confetti.classList.add("confetti");
-    confetti.style.left = Math.random() * 100 + "vw";
-    confetti.style.backgroundColor =
-      ["#ff4b2b", "#ff416c", "#ffd700", "#ffffff"][Math.floor(Math.random()*4)];
-    confetti.style.animationDuration = 2 + Math.random() * 2 + "s";
-    document.body.appendChild(confetti);
-
-    setTimeout(() => confetti.remove(), 3000);
-  }
-}
-  const text = "From the moment you came into my life, everything became brighter, warmer, and happier…";
-let index = 0;
-
-function typeText() {
-  if (index < text.length) {
-    document.getElementById("typingText").innerHTML += text.charAt(index);
-    index++;
-    setTimeout(typeText, 50);
+    const c = document.createElement("div");
+    c.className = "confetti";
+    c.style.left = Math.random() * 100 + "vw";
+    c.style.backgroundColor = ["#ff4b2b","#ff416c","#ffd700","#fff"][Math.floor(Math.random()*4)];
+    c.style.animationDuration = 2 + Math.random()*2 + "s";
+    document.body.appendChild(c);
+    setTimeout(() => c.remove(), 3000);
   }
 }
 
-typeText();
+/* Typing Effect */
+const text = "From the moment you came into my life, everything became brighter, warmer, and happier…";
+let i = 0;
 
+(function type() {
+  if (i < text.length) {
+    document.getElementById("typingText").innerHTML += text.charAt(i++);
+    setTimeout(type, 50);
+  }
+})();
 </script>
 
 </body>
