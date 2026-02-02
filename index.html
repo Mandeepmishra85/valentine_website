@@ -43,7 +43,12 @@ body {
     opacity: 0;
   }
 }
-
+.name {
+  color: white;
+  font-weight: 600;
+  margin-bottom: 15px;
+  font-size: 1rem;
+}
 /* ===== CARD ===== */
 .card {
   background: rgba(255, 255, 255, 0.2);
@@ -56,6 +61,38 @@ body {
   box-shadow: 0 25px 50px rgba(0,0,0,0.25);
   animation: fadeIn 1.2s ease;
 }
+.photo-wrapper {
+  width: 140px;
+  height: 140px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  padding: 5px;
+  background: linear-gradient(135deg, #ff416c, #ff4b2b);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  animation: glow 2.5s infinite alternate, heartbeat 1.8s infinite;
+}
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.06); }
+}
+
+.photo-wrapper img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid white;
+}
+
+@keyframes glow {
+  from {
+    box-shadow: 0 0 20px rgba(255,65,108,0.6);
+  }
+  to {
+    box-shadow: 0 0 40px rgba(255,75,43,0.9);
+  }
+}
+
 
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(30px); }
@@ -142,6 +179,10 @@ button {
 
 <!-- Main Card -->
 <div class="card">
+  <div class="photo-wrapper">
+  <img src="her.jpg" alt="My Valentine">
+</div>
+  <p class="name">For My Beautiful Valentine 💕</p>
   <h1>Will you be my Valentine? 💘</h1>
   <p>
     From the moment you came into my life,<br>
@@ -206,6 +247,19 @@ function launchConfetti() {
     setTimeout(() => confetti.remove(), 3000);
   }
 }
+  const text = "From the moment you came into my life, everything became brighter, warmer, and happier…";
+let index = 0;
+
+function typeText() {
+  if (index < text.length) {
+    document.getElementById("typingText").innerHTML += text.charAt(index);
+    index++;
+    setTimeout(typeText, 50);
+  }
+}
+
+typeText();
+
 </script>
 
 </body>
